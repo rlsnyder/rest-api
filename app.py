@@ -1,3 +1,6 @@
+#Gives us access to environment variables
+import os
+
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
@@ -9,7 +12,9 @@ from resources.store import Store, StoreList
 
 app = Flask(__name__)
 #Tells SQLAlchemy where the database file is so SQLAlchemy can work :)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+#Here it gets the database url/uri from a Heroku environment variable.
+#second argument of "sqlite:/// ..." is to still be able to run this app locally if Heroku app is not up.
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 #This config turns off flask's SQLAlchemy from tracking changes, and let's SQLAlchemy itself track the changes.
 #I made a note in video 97 of the Udemy API Course though, at 8:24 when Jose explains it. See that if needed!
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
