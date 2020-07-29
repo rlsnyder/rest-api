@@ -14,6 +14,8 @@ class UserRegister(Resource):
 		required=True,
 		help="This field may not be left blank."
 	)
+	
+	#The password is passed as JSON plain text - obviously you wouldn't do this in a real REST API, this was more of a learning exercise.
 
 	def post(self):
 		data = UserRegister.parser.parse_args()
