@@ -17,6 +17,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#Below is a play secret key, not actually secure as this is more of a learning project
 app.secret_key = 'logan'
 api = Api(app)
 
