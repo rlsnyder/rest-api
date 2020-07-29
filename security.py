@@ -1,7 +1,4 @@
-#below means "from user.py file, import the User class defined therein" - possible bc user.py is in the same directory as this file.
-
-# safe_str_cmp means "safe string compare" - so instead of using this_str == that_str, you do safe_str_cmp(this_str, that_str) - used because
-# sometimes different strings can have different encodings (ASCII, etc) and this accounts for that.
+# safe_str_cmp is safe in the sense that it comapres even if different strings have different encodings (ASCII, UTF, etc)
 from models.user import UserModel
 from werkzeug.security import safe_str_cmp
 
