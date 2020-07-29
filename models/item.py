@@ -20,8 +20,6 @@ class ItemModel(db.Model):
 
     @classmethod
     def find_by_name(cls, name):
-        # equivalent to SQL of "SELECT * FROM items WHERE name=name LIMIT 1"
-
         return cls.query.filter_by(name=name).first()
 
     def save_to_db(self):
