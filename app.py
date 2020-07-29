@@ -11,12 +11,11 @@ from resources.item import Item, ItemList
 from resources.store import Store, StoreList
 
 app = Flask(__name__)
-#Tells SQLAlchemy where the database file is so SQLAlchemy can work :)
+#Tells SQLAlchemy where the database file is so SQLAlchemy can work 
 #Here it gets the database url/uri from a Heroku environment variable.
 #second argument of "sqlite:/// ..." is to still be able to run this app locally if Heroku app is not up.
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
-#This config turns off flask's SQLAlchemy from tracking changes, and let's SQLAlchemy itself track the changes.
-#I made a note in video 97 of the Udemy API Course though, at 8:24 when Jose explains it. See that if needed!
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'logan'
 api = Api(app)
@@ -30,8 +29,7 @@ api.add_resource(StoreList, '/stores/')
 
 api.add_resource(UserRegister, '/register')
 
-# This makes it so the app only runs if it is called to run from this file. Otherwise it doesn't run if we imported it from elsewhere?
-# Don't reall understand it. See video 84 in Section 5 of Udemy course on REST APIs with Flask and Python.
+
 if __name__ == '__main__':
 	from db import db
 	db.init_app(app)
