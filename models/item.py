@@ -22,9 +22,6 @@ class ItemModel(db.Model):
     def find_by_name(cls, name):
         # equivalent to SQL of "SELECT * FROM items WHERE name=name LIMIT 1"
 
-        #since we indicated at the top that __tablename__ = 'items', cls.query, the query builder,
-		#returns "SELECT * FROM items" - however, we must filter this result to only include
-		#some items, which is what the filter_by method is for.
         return cls.query.filter_by(name=name).first()
 
     def save_to_db(self):
