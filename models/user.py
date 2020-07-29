@@ -14,9 +14,6 @@ class UserModel(db.Model):
 
 	@classmethod
 	def find_by_username(cls, username):
-		#since we indicated at the top that __tablename__ = 'users', cls.query, the query builder,
-		#returns "SELECT * FROM users" - however, we must filter this result to only include
-		#some users, which is what the filter_by method is for.
 		return cls.query.filter_by(username=username).first()
 
 	@classmethod
